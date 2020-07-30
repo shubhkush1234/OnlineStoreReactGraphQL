@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './components/App';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Signup from './components/Signup';
+import Signin from './components/Signin';
+import Checkout from './components/Checkout';
+import Navbar from './components/Navbar';
+import "gestalt/dist/gestalt.css";
+
+
+const Root = () => (
+  <BrowserRouter>
+    <React.Fragment>
+      <Navbar />
+
+      <Switch>
+        <Route component={App} path="/" />
+        <Route component={Signup} path="/Signup" />
+        <Route component={Signin} path="/Signin" />
+        <Route component={Checkout} path="/Checkout" />
+      </Switch>
+    </React.Fragment>
+  </BrowserRouter>
+);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Root />,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
